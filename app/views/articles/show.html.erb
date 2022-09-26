@@ -1,8 +1,21 @@
-<h1>Article details</h1>
+<h1 class="text-center my-4"><%= @article.title %></h1>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Title: </strong><%= @article.description %></p>
-
-  <%= link_to 'Edit', edit_article_path(@article) %> | 
-  <%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure ?" } %> |
-  <%= link_to 'Back', articles_path %>
+<div class="container">
+  <div class="row justify-content-md-center">  
+    <div class="col-md-8">
+      <div class="card text-center shadow my-2 bg-white rounded">
+        <div class="card-header">
+          by Gabriel Vieira
+        </div>
+        <div class="card-body">
+          <div class="card-text" style="text-align: initial"><%= simple_format(@article.description) %></div>
+          <a type="button"> <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-primary" %> </a>
+          <a type="button"> <%= button_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %> </a>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(@article.created_at) %> ago, Edited <%= time_ago_in_words(@article.updated_at) %> ago </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
