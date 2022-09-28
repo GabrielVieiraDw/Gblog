@@ -5,7 +5,7 @@
     <div class="col-md-8">
       <div class="card text-center shadow my-2 bg-white rounded">
         <div class="card-header">
-          by <%= @article.user.username if @article.user %>
+          by <%= @article.user.user_name if @article.user %>
         </div>
         <div class="card-body">
           <div class="card-text" style="text-align: initial"><%= simple_format(@article.description) %></div>
