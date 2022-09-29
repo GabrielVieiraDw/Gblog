@@ -1,8 +1,7 @@
-
 <div class="container">
-  <%= render 'shared/errors' %>
+  <%= render 'shared/errors', object: @article %>
   <%= form_with(model: @article) do |f| %>
-    <div class="container shadow p-4 bg-white rounded">
+    <div class="container shadow p-4 bg-secondary rounded">
       <div class="form-group row mb-4">
         <%= f.label :title, class: "col-2 col-form-label" %><br/>
         <div class="col-10">
