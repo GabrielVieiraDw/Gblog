@@ -19,13 +19,13 @@
       <div class="form-group row">
         <%= f.label :password, class: "col-2 col-form-label" %><br/>
         <div class="col-10">
-          <%= f.password_field :password, class: "form-control"  %>
+          <%= f.password_field :password, class: "form-control", placeholder: "Enter a password"  %>
         </div>
       </div>
     </div>
 
     <div class="shadow rounded mt-2" style="float: right">
-      <a type="button"> <%= f.submit "Sign up", class: "btn btn-outline-success" %> </a>
+      <a type="button"> <%= f.submit(@user.new_record? ? "Sign up" : "Update", class: "btn btn-outline-success") %> </a>
       <a type="button"> <%= link_to 'Cancel', signup_path, class: "btn btn-outline-danger" %> </a>
     </div>
   <% end %>
