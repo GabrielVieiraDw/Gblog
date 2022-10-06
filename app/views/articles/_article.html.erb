@@ -2,7 +2,7 @@
   <% @articles.each do |article| %>
     <div class="row justify-content-md-center">  
       <div class="col-md-8">
-        <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card text-center shadow mb-2 bg-white rounded">
           <div class="card-header">
             by <%= article.user.user_name if article.user %>
           </div>
