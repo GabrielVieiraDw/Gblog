@@ -20,9 +20,18 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li></strong>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+        <% if logged_in? %>
+          <strong><li class="nav-item">
+            <%= link_to current_user.user_name, user_path(current_user), class: "nav-link"%>
+          </li></strong>
+          <strong><li class="nav-item">
+            <%= link_to "Logout", logout_path, class: "nav-link", method: :delete %>
+          </li></strong>
+        <% else %>
+          <strong><li class="nav-item">
+            <%= link_to "Log in", login_path, class: "nav-link" %>
+          </li></strong>
+        <% end%>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

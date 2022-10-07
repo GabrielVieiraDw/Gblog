@@ -1,14 +1,8 @@
-<div class="container col-5">
-  <%= render 'shared/errors', object: @user %>
-  <%= form_with(model: @user) do |f| %>
-    <div class="container shadow p-4 bg-secondary rounded">
-      <div class="form-group row mb-4">
-        <%= f.label :user_name, class: "col-2 col-form-label" %><br/>
-        <div class="col-10">
-          <%= f.text_field :user_name, class: "form-control" %>
-        </div>
-      </div>
+<h1 class="text-center my-4">Log in</h1>
 
+<div class="container col-5">
+  <%= form_with(scope: :session, url: login_path) do |f| %>
+    <div class="container shadow p-4 bg-secondary rounded">
       <div class="form-group row">
         <%= f.label :email, class: "col-2 col-form-label" %>
         <div class="col-10">
@@ -25,8 +19,8 @@
     </div>
 
     <div class="shadow rounded mt-2" style="float: right">
-      <a type="button"> <%= f.submit(@user.new_record? ? "Sign up" : "Update", class: "btn btn-outline-success") %> </a>
-      <a type="button"> <%= link_to 'Cancel', articles_path, class: "btn btn-outline-danger" %> </a>
+      <a type="button"> <%= f.submit "Log in", class: "btn btn-outline-success" %> </a>
+      <a type="button"> <%= link_to 'Cancel', signup_path, class: "btn btn-outline-danger" %> </a>
     </div>
   <% end %>
 </div>
