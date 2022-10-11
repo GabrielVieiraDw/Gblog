@@ -9,7 +9,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
             <p class="card-text"><%= truncate(article.description, lenght: 100) %></p>
-            <% if logged_in? && article.user == current_user %>
+            <% if logged_in? && (article.user == current_user || current_user.admin?) %>
               <a type="button"> <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-primary" %> </a>
               <a type="button"> <%= button_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %> </a>
             <% end %>

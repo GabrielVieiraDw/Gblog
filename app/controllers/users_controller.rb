@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit show destroy update]
   before_action :require_user, only: %i[edit update]
-  before_action :require_self_user, only: %i[edit update]
+  before_action :require_self_user, only: %i[edit update destroy]
 
 
   def index
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = "User updated!"
-      redirect_to :show
+      redirect_to @user
     else
       render :edit
     end
@@ -37,6 +37,13 @@ class UsersController < ApplicationController
 
   def show
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
+  end
+
+  def destroy
+    @user.destroy
+    session[:user_id] = nil if @user == current_user
+    flash[:notice] = "Account and associated articles destroyed"
+    redirect_to articles_path
   end
 
   private
@@ -50,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   def require_self_user
-    if current_user != @user
+    if current_user != @user && !current_user.admin?
       flash[:alert] = "You can only edit your account"
       redirect_to @user
     end

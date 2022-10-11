@@ -25,13 +25,14 @@
         <% if logged_in? %>
           <strong><li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= current_user.user_name %>
+              <%= "Admin " if current_user.admin? %><%= current_user.user_name %>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "View profile", user_path(current_user), class: "dropdown-item text-dark" %></li>
               <li><%= link_to "Edit profile", edit_user_path(current_user), class: "dropdown-item text-dark" %></li>
+              <li><%= button_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?"} %></li>
               <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "Logout", logout_path, class: "dropdown-item text-dark", method: :delete %></li>
+              <li><%= button_to "Logout", logout_path, class: "dropdown-item text-dark", method: :delete %></li>
             </ul>
           </li></strong>
         <% else %>
