@@ -1,0 +1,18 @@
+<div class="container col-5">
+  <%= render 'shared/errors', object: @category %>
+  <%= form_with(model: @category) do |f| %>
+    <div class="container shadow p-4 bg-secondary rounded">
+      <div class="form-group row mb-4">
+        <%= f.label :name, "Category", class: "col-2 col-form-label" %><br/>
+        <div class="col-10">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="shadow rounded mt-2" style="float: right">
+      <a type="button"> <%= f.submit class: "btn btn-outline-success" %> </a>
+      <a type="button"> <%= link_to 'Cancel', categories_path, class: "btn btn-outline-danger" %> </a>
+    </div>
+  <% end %>
+</div>

@@ -22,6 +22,19 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li></strong>
+        <strong><li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+          <% if logged_in? && current_user.admin? %>
+            <li><%= link_to "Create new category", new_category_path, class: "dropdown-item text-dark" %></li>
+          <% end %>
+            <li><%= link_to "View categories", categories_path, class: "dropdown-item text-dark" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li></strong>
         <% if logged_in? %>
           <strong><li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
